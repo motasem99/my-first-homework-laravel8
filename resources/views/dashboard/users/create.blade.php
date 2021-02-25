@@ -10,22 +10,34 @@
                                 @csrf
                                 <div class="form-group">
                                         <label for="nf-email">الاسم</label>
-                                        <input type="text" id="nf-email" name="name" class="form-control" placeholder="ادخل  الاسم">
+                                        <input type="text" id="nf-email" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="ادخل  الاسم">
+                                        @error('name')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <span class="help-block">رجاءا قم بادخال الاسم</span>
                                     </div>
                                     <div class="form-group">
                                         <label for="nf-email">البريد الالكتروني</label>
-                                        <input type="email" id="nf-email" name="email" class="form-control" placeholder="ادخل البريد الالكتروني">
+                                        <input type="email" id="nf-email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="ادخل البريد الالكتروني">
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <span class="help-block">رجاءا قم بادخال الايميل</span>
                                     </div>
                                     <div class="form-group">
                                         <label for="nf-password">كلمة المرور</label>
-                                        <input type="password" id="nf-password" name="password" class="form-control" placeholder="ادخل كلمة المرور">
+                                        <input type="password" id="nf-password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="ادخل كلمة المرور">
+                                        @error('password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <span class="help-block">رجاءا قم بادخال كلمة المرور</span>
                                     </div>
                                     <div class="form-group">
                                         <label for="nf-password">تاكيد كلمة المرور</label>
-                                        <input type="password" id="nf-password" name="conf_password" class="form-control" placeholder="أكد كلمة المرور">
+                                        <input type="password" id="nf-password" name="conf_password @error('conf_password') is-invalid @enderror" class="form-control" placeholder="أكد كلمة المرور">
+                                        @error('conf_password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <span class="help-block">رجاءا قم بتاكيد كلمة المرور</span>
                                     </div>
                             <div class="card-footer">

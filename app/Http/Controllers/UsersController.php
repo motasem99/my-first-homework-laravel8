@@ -37,6 +37,14 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|unique:users|max:100',
+            'email' => 'required|unique:users|email',
+            'password' => 'required|same:conf_password|min:6',
+            'conf_password' => 'required',
+
+        ], [],["name" => 'اسم المستخدم', 'email' => 'البريد الالكتروني','password'=>'كلمة المرور', 'conf_password'=>'تاكيد كلمة المرور  ' ]);
+
         //
         $user= new User();
         $user->name = $request->name;
