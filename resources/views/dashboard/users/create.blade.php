@@ -8,6 +8,11 @@
                             <div class="card-block">
                                 <form method="post" action="/dashboard/users/save">
                                 @csrf
+                                @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                 @endif
                                 <div class="form-group">
                                         <label for="nf-email">الاسم</label>
                                         <input type="text" id="nf-email" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="ادخل  الاسم"  value="{{old('name')}}">
@@ -34,7 +39,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="nf-password">تاكيد كلمة المرور</label>
-                                        <input type="password" id="nf-password" name="conf_password @error('conf_password') is-invalid @enderror" class="form-control" placeholder="أكد كلمة المرور"  value="{{old('password')}}">
+                                        <input type="password" id="nf-password" name="conf_password" class="form-control  @error('conf_password') is-invalid @enderror" placeholder="أكد كلمة المرور"  value="{{old('password')}}">
                                         @error('conf_password')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

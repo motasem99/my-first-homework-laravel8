@@ -52,6 +52,7 @@ class UsersController extends Controller
         $user->email_verified_at=date('Y-m-d H:i:s');
         $user->password=Hash::make($request->password);
         $user->save();
+        return redirect()->back()->with('message', 'تم اضافة المستخدم بنجاح');
     }
 
     /**
