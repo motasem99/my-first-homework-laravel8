@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -36,6 +38,12 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+        $user= new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->email_verified_at=date('Y-m-d H:i:s');
+        $user->password=Hash::make($request->password);
+        $user->save();
     }
 
     /**
