@@ -2,17 +2,17 @@
     @section('content')
         <div class="col-md-12">
             <div class="card">
-                            <div class="card-header">
-                                <h3>ادخال البيانات</h3>
-                            </div>
-                            <div class="card-block">
-                                <form method="post" action="/dashboard/users/save">
-                                @csrf
-                                @if(session()->has('message'))
-                                    <div class="alert alert-success">
-                                        {{ session()->get('message') }}
-                                    </div>
-                                 @endif
+                <div class="card-header">
+                    <h3>ادخال البيانات</h3>
+                </div>
+                    <div class="card-block">
+                        <form method="post" action="/dashboard/users/save">
+                            @csrf
+                            @if(session()->has('message'))
+                                <div class="alert alert-success">
+                                    {{ session()->get('message') }}
+                                </div>
+                            @endif
                                 <div class="form-group">
                                         <label for="nf-email">الاسم</label>
                                         <input type="text" id="nf-email" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="ادخل  الاسم"  value="{{old('name')}}">
@@ -48,8 +48,8 @@
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> حفظ</button>
                             </div>
-                                </form>
-                            </div>
+                        </form>
+                    </div>
             </div>
         </div>
 
