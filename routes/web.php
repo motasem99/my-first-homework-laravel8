@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', )->middleware(['auth'])->name('dashboard');
+Route::group(['middleware' =>'auth'], function () {
+    Route::group(['prefix'=>'dashboard'], function () {
+        Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+        Route::get('/users/create', [UsersController::class, 'create']);
+    });
+});
+
 
 require __DIR__.'/auth.php';
